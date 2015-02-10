@@ -304,8 +304,19 @@ unpack(?ITS_SESSION_INFO=T, Bin) ->
 	unpack_octstring(T, Bin);
 
 unpack(?USSD_SERVICE_OP=T, Bin) ->
-	unpack_octstring(T, Bin).
+	unpack_octstring(T, Bin);
 
+%% price per message
+unpack(5144=T, Bin) ->
+	unpack_int(T, Bin);
+
+%% dont know
+unpack(5130=T, Bin) ->
+	unpack_int(T, Bin);
+
+%% dont know
+unpack(5142=T, Bin) ->
+	unpack_int(T, Bin).
 
 pack_multi(_, undefined) ->
 	<<>>;
